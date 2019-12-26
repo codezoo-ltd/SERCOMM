@@ -89,7 +89,7 @@ nsapi_error_t SERCOMM_TPB23::init()
     _at->lock();
     _at->flush();
     _at->at_cmd_discard("", "");  //Send AT
-
+    _at->at_cmd_discard("+CPSMS", "=0"); // disable power saving mode
     _at->at_cmd_discard("+CMEE", "=1"); // verbose responses
 
     return _at->unlock_return_error();
